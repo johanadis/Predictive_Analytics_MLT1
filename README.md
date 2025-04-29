@@ -39,12 +39,12 @@ Harga emas memiliki volatilitas yang signifikan, dipengaruhi oleh berbagai fakto
 - Bagaimana cara membangun model prediktif yang dapat meramalkan harga penutupan emas harian dengan tingkat akurasi tinggi menggunakan data historis?
 
 ### Goals
-1. Mengembangkan model *machine learning* yang mampu memprediksi harga penutupan emas dengan kesalahan minimal.
-2. Menyediakan alat bantu berbasis data bagi investor, trader, dan pengambil keputusan untuk mengantisipasi pergerakan harga emas.
-3. Mengevaluasi efektivitas pendekatan *deep learning* dalam menangani data deret waktu keuangan.
+1. Mengembangkan model *machine learning* yang mampu memprediksi harga penutupan emas.
+2. Mengevaluasi efektivitas pendekatan *deep learning* dalam menangani data time series harga emas.
+3. Memprediksi penutupan harga emas dalam 30 hari mendatang.
 
 ### Solution Statement
-- **Pendekatan**: Menggunakan model *Gated Recurrent Unit* (GRU), sebuah jenis jaringan saraf rekuren (*recurrent neural network*), yang dirancang untuk menangani dependensi temporal dalam data deret waktu.
+- **Pendekatan**: Menggunakan model *Gated Recurrent Unit* (GRU), sebuah jenis jaringan saraf rekuren (*recurrent neural network*), yang dirancang untuk menangani dependensi temporal dalam data time series.
 - **Optimasi**: Melakukan *hyperparameter tuning* dengan alat seperti Hyperopt untuk memastikan model mencapai performa optimal.
 - **Manfaat**: Memberikan prediksi yang akurat  untuk mendukung pengambilan keputusan finansial.
 
@@ -69,7 +69,7 @@ Harga emas memiliki volatilitas yang signifikan, dipengaruhi oleh berbagai fakto
    - Nilai maksimum: $2.075,10 (2024)
 2. **Distribusi Harga Emas**:
    - Histogram menunjukkan distribusi multimodal dengan dua puncak utama di sekitar $1.250 (periode 2015–2018) dan $1.800 (periode 2020–2024).
-   - Distribusi sedikit condong ke kanan (*right-skewed*), menunjukkan adanya lonjakan harga ekstrem.
+   - Distribusi sedikit condong ke kiri, menunjukkan adanya lonjakan harga ekstrem.
 3. **Tren Temporal**:
    - Plot deret waktu mengungkapkan tren naik jangka panjang sejak 2019, dengan volatilitas tinggi pada 2020 (pandemi COVID-19) dan 2024 (diasumsikan karena faktor ekonomi hipotetis).
    - Terdapat periode stagnasi antara 2015–2018, diikuti oleh kenaikan tajam pasca-2019.
@@ -211,6 +211,7 @@ Model dievaluasi menggunakan empat metrik utama pada set pengujian:
 - **Plot Prediksi vs Aktual**: Grafik membandingkan harga penutupan aktual dengan prediksi model pada set pengujian.
 ![alt text](./images/prediksi.png)
 
+
 - **Plot Interface**: Prediksi penutupan harga emas dalam 30 hari mendatang
 ![alt text](./images/interface.png)
 ---
@@ -224,7 +225,7 @@ Model dievaluasi menggunakan empat metrik utama pada set pengujian:
 - Model GRU yang dikembangkan menunjukkan performa yang bagus dalam memprediksi harga penutupan emas, dengan kesalahan minimal dan kemampuan generalisasi yang kuat. Model ini dapat diandalkan sebagai alat bantu untuk investor dan trader dalam merencanakan strategi investasi berbasis data.
 - Prediksi Harga Emas 30 Hari Mendatang penurunan harga emas
 
-#### Business Decisions
+#### Saran Investasi
 - Bukan Saat yang Tepat untuk FOMO Investasi Emas
 Prediksi model menunjukkan potensi penurunan harga emas dalam waktu dekat. Meski tren historis menunjukkan kenaikan, sinyal teknikal dari model saat ini tidak mendukung aksi beli agresif (FOMO).
 
