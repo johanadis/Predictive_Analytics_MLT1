@@ -190,7 +190,6 @@ Model dievaluasi menggunakan empat metrik utama pada set pengujian:
 ### Formula Metrik
 - **RMSE** = $\sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y_i})^2}$
 
-<br>
 
 - **MAE** = $\frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y_i}|$ 
 
