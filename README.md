@@ -190,14 +190,14 @@ Model dievaluasi menggunakan empat metrik utama pada set pengujian:
 ### Formula Metrik
 - **RMSE** = $\sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y_i})^2}$
 
-
-- **MAE** = $\frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y_i}|$ 
-
 <br>
+
+- **MAE** = $\frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y_i}|$
+
 <br>
 
 - **MAPE** = $\frac{1}{n} \sum_{i=1}^{n} \left| \frac{y_i - \hat{y_i}}{y_i} \right| \times 100\%$
-<br>
+
 <br>
 
 - **R²** = $1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y_i})^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}$
@@ -215,14 +215,34 @@ Model dievaluasi menggunakan empat metrik utama pada set pengujian:
 ![alt text](./images/interface.png)
 
 ### Kesimpulan
-Model GRU yang dikembangkan menunjukkan performa yang bagus dalam memprediksi harga penutupan emas, dengan kesalahan minimal dan kemampuan generalisasi yang kuat. Model ini dapat diandalkan sebagai alat bantu untuk investor dan trader dalam merencanakan strategi investasi berbasis data.
+- **Parameter terbaik** yang diperoleh dari proses tuning meliputi jumlah unit GRU sebanyak 80, tingkat dropout sebesar 0.4025, learning rate sebesar 0.0058, ukuran batch 16, dan jumlah epoch sebanyak 100.
+- **Model prediksi harga emas** menunjukkan performa sangat baik pada data uji dengan **RMSE: 31.07**, **MAE: 24.33**, dan **MAPE: 1.03%**.  
+- **Nilai R² sebesar 0.9874** menunjukkan bahwa model mampu menjelaskan hampir seluruh variansi harga emas aktual.  
+- Grafik *Actual vs Predicted* memperlihatkan prediksi mengikuti pola harga emas dengan sangat akurat, tanpa deviasi yang signifikan.  
+- Grafik *Training vs Validation Loss* menunjukkan proses pelatihan yang stabil tanpa tanda overfitting, dengan tren loss menurun dan konsisten.
+- Model GRU yang dikembangkan menunjukkan performa yang bagus dalam memprediksi harga penutupan emas, dengan kesalahan minimal dan kemampuan generalisasi yang kuat. Model ini dapat diandalkan sebagai alat bantu untuk investor dan trader dalam merencanakan strategi investasi berbasis data.
+- Prediksi Harga Emas 30 Hari Mendatang penurunan harga emas
 
+#### Business Decisions
+- Bukan Saat yang Tepat untuk FOMO Investasi Emas
+Prediksi model menunjukkan potensi penurunan harga emas dalam waktu dekat. Meski tren historis menunjukkan kenaikan, sinyal teknikal dari model saat ini tidak mendukung aksi beli agresif (FOMO).
+
+- Strategi Menunggu dan Lihat (Wait-and-See)
+Investor disarankan untuk menunggu konfirmasi pergerakan harga emas selama beberapa hari ke depan sebelum melakukan aksi beli. Ini dapat menghindari potensi kerugian dari harga yang mungkin terus turun.
+
+- Manfaatkan Penurunan Sebagai Peluang
+Jika harga turun sesuai prediksi, kondisi tersebut bisa dimanfaatkan sebagai entry point jangka panjang yang lebih menguntungkan, dengan syarat pemantauan terus-menerus terhadap indikator pasar lainnya.
+
+- Diversifikasi Portofolio
+Alih-alih hanya fokus pada emas, investor dapat mempertimbangkan instrumen lain seperti saham, crypto, obligasi, atau komoditas lain untuk mengurangi risiko dan volatilitas dari satu aset saja.
+
+- Evaluasi Data Eksternal dan Sentimen Pasar
+Mengingat prediksi penurunan ini bertentangan dengan tren historis, sangat disarankan menggabungkan data makroekonomi dan faktor geopolitik sebagai bahan pertimbangan sebelum keputusan investasi diambil.
 ---
 
 ## Rekomendasi Tambahan
 1. **Peningkatan Model**:
    - Menambahkan fitur tambahan seperti nilai tukar USD, suku bunga, atau indeks saham untuk meningkatkan akurasi.
-   - Mencoba arsitektur hybrid (GRU + CNN) untuk menangkap pola spasial dan temporal, atau model lainnya.
 2. **Deployment**:
    - Mengintegrasikan model ke dalam aplikasi web atau API untuk akses real-time.
 3. **Pemantauan**:
