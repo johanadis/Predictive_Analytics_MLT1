@@ -31,7 +31,7 @@ Pendekatan ini memungkinkan model untuk belajar dari pola historis dan memberika
 - [World Gold Council: Gold Demand Trends](https://www.gold.org/goldhub/research/gold-demand-trends-2023)
 - [ScienceDirect: Economic Factors Affecting Gold Prices](https://www.sciencedirect.com/science/article/pii/S0301420717300034)
 - [Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling](https://arxiv.org/pdf/1412.3555)
-
+---
 ## Business Understanding
 
 ### Problem Statements
@@ -214,6 +214,7 @@ Model dievaluasi menggunakan empat metrik utama pada set pengujian:
 - **Plot Interface**: Prediksi penutupan harga emas dalam 30 hari mendatang
 ![alt text](./images/interface.png)
 
+---
 ### Kesimpulan
 - **Parameter terbaik** yang diperoleh dari proses tuning meliputi jumlah unit GRU sebanyak 80, tingkat dropout sebesar 0.4025, learning rate sebesar 0.0058, ukuran batch 16, dan jumlah epoch sebanyak 100.
 - **Model prediksi harga emas** menunjukkan performa sangat baik pada data uji dengan **RMSE: 31.07**, **MAE: 24.33**, dan **MAPE: 1.03%**.  
