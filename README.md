@@ -213,8 +213,8 @@ Model dievaluasi menggunakan empat metrik utama pada set pengujian:
 
 - **Plot Interface**: Prediksi penutupan harga emas dalam 30 hari mendatang
 ![alt text](./images/interface.png)
-
 ---
+
 ### Kesimpulan
 - **Parameter terbaik** yang diperoleh dari proses tuning meliputi jumlah unit GRU sebanyak 80, tingkat dropout sebesar 0.4025, learning rate sebesar 0.0058, ukuran batch 16, dan jumlah epoch sebanyak 100.
 - **Model prediksi harga emas** menunjukkan performa sangat baik pada data uji dengan **RMSE: 31.07**, **MAE: 24.33**, dan **MAPE: 1.03%**.  
