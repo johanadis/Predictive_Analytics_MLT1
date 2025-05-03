@@ -100,14 +100,15 @@ Memastikan dataset yang digunakan bersih dan siap untuk proses analisis dan pemo
 - **1**: Menampilkan informasi dataset menggunakan `df.info()` untuk memeriksa jumlah baris, kolom, tipe data, dan apakah ada nilai kosong.
 - **2**: Menggunakan `df.describe()` untuk melihat statistik deskriptif dataset, seperti rata-rata, median, dan nilai minimum/maksimum.
 - **3**: Memeriksa jumlah nilai kosong di setiap kolom menggunakan `df.isnull().sum()`.
+- **4**: Memeriksa data duplikat di setiap kolom menggunakan `df.duplicated().sum()`.
 
 **Keuntungan:**
-- Memastikan dataset tidak memiliki nilai kosong yang dapat mengganggu proses analisis atau pemodelan.
+- Memastikan dataset tidak memiliki nilai kosong dan data duplikat yang dapat mengganggu proses analisis atau pemodelan.
 - Memberikan gambaran awal tentang distribusi data dan tipe data yang digunakan.
 - Mengidentifikasi potensi masalah data, seperti outlier atau kolom yang tidak relevan.
 
 **Insight:**
-- Dataset ini memiliki 1258 baris dan tidak ada nilai kosong, sehingga data relatif bersih dan siap untuk digunakan.
+- Dataset ini memiliki 1258 baris dan tidak ada nilai kosong dan data duplikat, sehingga data relatif bersih dan siap untuk digunakan.
 """
 
 # Tampilkan informasi dataset
@@ -118,6 +119,10 @@ df.describe()
 
 # Periksa nilai yang hilang
 df.isnull().sum()
+
+# Cek duplicate values
+print("Duplicate rows:")
+print(df.duplicated().sum())
 
 """## **3. Exploratory Data Analysis**
 
