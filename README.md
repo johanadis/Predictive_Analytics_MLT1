@@ -43,8 +43,8 @@ Proyek ini bertujuan untuk mengembangkan model prediktif berbasis *deep learning
 
 **Referensi Utama:**
 - Yahoo Finance. *Historical Gold Prices*. Diakses dari: [Yahoo Finance](https://finance.yahoo.com/quote/GC%3DF/history/)
-- Dataset: Data harga emas harian dari 2020 hingga 2025, diunduh dari Yahoo Finance.
-
+- Understanding [LSTM](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) Networks
+- Understanding [Gated Recurrent Unit (GRU)](https://medium.com/@anishnama20/understanding-gated-recurrent-unit-gru-in-deep-learning-2e54923f3e2) in Deep Learning
 ---
 
 ## 2. Business Understanding
@@ -258,7 +258,7 @@ Evaluasi dilakukan untuk mengukur performa kedua model pada data *testing* mengg
 
 ---
 
-## Hubungan dengan Problem Statements dan Goals
+## 7. Hubungan dengan Problem Statements dan Goals
 
 ### ❓ Problem Statement 1:  
 _"Bagaimana cara memanfaatkan data historis harga emas untuk memprediksi harga penutupan di masa depan dengan tingkat akurasi yang tinggi?"_
@@ -304,19 +304,19 @@ _"Melakukan perbandingan mendalam antara model LSTM dan GRU untuk menentukan pen
 
 ---
 
-## 7. Kesimpulan dan Rekomendasi
+## 8. Kesimpulan dan Rekomendasi 🌟
 
-### 7.1 Kesimpulan
+### 8.1 Kesimpulan 
 - **Performa Model**: GRU terbukti lebih unggul dibandingkan LSTM dalam memprediksi harga penutupan emas.
 - **Efisiensi**: GRU menawarkan keunggulan dalam hal kecepatan pelatihan dan akurasi, menjadikannya pilihan yang lebih praktis untuk aplikasi prediksi *time series*.
 - **Aplikasi**: Kedua model dapat digunakan untuk prediksi jangka pendek, tetapi GRU lebih direkomendasikan karena performanya yang lebih baik.
 
-### 7.2 Rekomendasi Bisnis
-1. **Investasi Jangka Pendek**: Model GRU dapat diintegrasikan ke dalam sistem untuk mendukung keputusan beli atau jual emas secara real-time.
-2. **Manajemen Risiko**: Prediksi harga emas membantu investor mengelola risiko volatilitas pasar dalam portofolio mereka.
-3. **Pengembangan Produk Keuangan**: Institusi keuangan dapat memanfaatkan model ini untuk menciptakan alat analisis harga emas.
+### 8.2 Rekomendasi Bisnis
+- **Investasi Jangka Pendek**: Model GRU dapat diintegrasikan ke dalam sistem untuk mendukung keputusan beli atau jual emas secara real-time.
+- **Manajemen Risiko**: Prediksi harga emas membantu investor mengelola risiko volatilitas pasar dalam portofolio mereka.
+- **Pengembangan Produk Keuangan**: Institusi keuangan dapat memanfaatkan model ini untuk menciptakan alat analisis harga emas.
 
-### 7.3 Pengembangan Lebih Lanjut
+### 8.3 Pengembangan Lebih Lanjut
 - **Fitur Tambahan**: Menambahkan variabel eksternal seperti tingkat inflasi, nilai tukar dolar AS, fitur teknikal indikator atau sentimen pasar dari berita untuk meningkatkan akurasi.
 - **Arsitektur Alternatif**: Mengeksplorasi model seperti *Transformer* atau *Temporal Convolutional Networks* (TCN) untuk menangani pola yang lebih kompleks.
 - **Prediksi Jangka Panjang**: Mengadaptasi model untuk prediksi jangka panjang dengan memperluas *window size* atau menggabungkan pendekatan *ensemble*.
