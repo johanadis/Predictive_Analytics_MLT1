@@ -160,9 +160,39 @@ LSTM adalah jenis *Recurrent Neural Network* (RNN) yang dirancang untuk menangka
 
 #### ➡️ Pembahasan Parameter
 	
-👉  **Parameter Default yang Digunakan (Tidak Disesuaikan):**
-- **Activation Function**: `tanh` untuk aktivasi sel dan `sigmoid` untuk *gate* (default Keras/TensorFlow).
-- **Initializer**: Glorot Uniform untuk bobot kernel dan Recurrent Uniform untuk bobot berulang (default Keras/TensorFlow).
+👉 **Parameter Default yang Digunakan (Tidak Disesuaikan):**
+- **`activation`**: `'tanh'`
+  - Fungsi aktivasi untuk output LSTM. Default adalah hyperbolic tangent (`tanh`), yang umum digunakan karena cocok untuk data time series yang dinormalisasi.
+- **`recurrent_activation`**: `'sigmoid'`
+  - Fungsi aktivasi untuk gerbang rekuren (forget gate, input gate, output gate). Default adalah sigmoid, yang membatasi output antara 0 dan 1.
+- **`use_bias`**: `True`
+  - Menentukan apakah lapisan menggunakan vektor bias. Default adalah `True`, sehingga bias diaktifkan untuk semua gerbang.
+- **`kernel_initializer`**: `'glorot_uniform'`
+  - Inisialisasi bobot untuk matriks kernel (bobot input). Default adalah Glorot Uniform (Xavier Uniform), yang cocok untuk menjaga stabilitas pelatihan.
+- **`recurrent_initializer`**: `'orthogonal'`
+  - Inisialisasi bobot untuk matriks rekuren (bobot state). Default adalah inisialisasi ortogonal, yang membantu mencegah masalah vanishing/exploding gradients.
+- **`bias_initializer`**: `'zeros'`
+  - Inisialisasi untuk vektor bias. Default adalah nol, yang merupakan pilihan aman.
+- **`unit_forget_bias`**: `True`
+  - Jika `True`, menambahkan 1 ke bias forget gate saat inisialisasi untuk mendorong forgetting awal yang lebih lambat. Ini adalah praktik standar untuk LSTM.
+- **`kernel_regularizer`**, **`recurrent_regularizer`**, **`bias_regularizer`**: `None`
+  - Tidak ada regularisasi (misalnya, L1 atau L2) yang diterapkan pada bobot kernel, rekuren, atau bias secara default.
+- **`activity_regularizer`**: `None`
+  - Tidak ada regularisasi pada output lapisan.
+- **`kernel_constraint`**, **`recurrent_constraint`**, **`bias_constraint`**: `None`
+  - Tidak ada batasan (constraints) pada bobot.
+- **`recurrent_dropout`**: `0.0`
+  - Tidak ada dropout yang diterapkan pada state rekuren.
+- **`return_state`**: `False`
+  - Tidak mengembalikan state (hidden state dan cell state) secara default.
+- **`go_backwards`**: `False`
+  - Memproses urutan secara berurutan (bukan mundur).
+- **`stateful`**: `False`
+  - Tidak mempertahankan state antar batch, yang sesuai untuk pelatihan standar.
+- **`time_major`**: `False`
+  - Format input adalah `(batch, timesteps, features)`, bukan `(timesteps, batch, features)`.
+- **`unroll`**: `False`
+  - Tidak meng-unroll jaringan, yang lebih efisien untuk urutan panjang tetapi membutuhkan lebih banyak memori.
 
 👉 **Parameter model LSTM dioptimalkan menggunakan pustaka `Hyperopt` untuk mencapai performa terbaik:**
 - **Units**: Jumlah unit LSTM dalam lapisan, diatur pada 96 setelah optimasi (bukan default).
@@ -191,8 +221,54 @@ GRU adalah varian dari RNN yang lebih sederhana dibandingkan LSTM, dirancang unt
 #### ➡️ Pembahasan Parameter
 
 👉 **Parameter Default yang Digunakan (Tidak Disesuaikan):**
-- **Activation Function**: `tanh` untuk aktivasi dan `sigmoid` untuk *gate* (default Keras/TensorFlow).
-- **Initializer**: Glorot Uniform untuk bobot kernel dan Recurrent Uniform untuk bobot berulang (default Keras/TensorFlow).
+
+
+1. **`activation`**  
+   - **Nilai Default**: `'tanh'`  
+   - **Penjelasan**: Fungsi aktivasi untuk output dari gerbang update dan reset. Karena tidak disebutkan dalam notebook, maka `'tanh'` digunakan.
+
+2. **`recurrent_activation`**  
+   - **Nilai Default**: `'sigmoid'`  
+   - **Penjelasan**: Fungsi aktivasi untuk gerbang update dan reset dalam perhitungan rekursif. Tidak disebutkan, sehingga `'sigmoid'` digunakan.
+
+3. **`use_bias`**  
+   - **Nilai Default**: `True`  
+   - **Penjelasan**: Menentukan apakah layer menggunakan vektor bias. Tidak diatur, jadi default `True` berlaku.
+
+4. **`kernel_initializer`**  
+   - **Nilai Default**: `'glorot_uniform'`  
+   - **Penjelasan**: Inisialisasi untuk matriks bobot kernel (input ke hidden). Tidak disebutkan, sehingga `'glorot_uniform'` digunakan.
+
+5. **`recurrent_initializer`**  
+   - **Nilai Default**: `'orthogonal'`  
+   - **Penjelasan**: Inisialisasi untuk matriks bobot rekursif (hidden ke hidden). Tidak diatur, jadi `'orthogonal'` digunakan.
+
+6. **`bias_initializer`**  
+   - **Nilai Default**: `'zeros'`  
+   - **Penjelasan**: Inisialisasi untuk vektor bias. Tidak disebutkan, sehingga `'zeros'` digunakan.
+
+7. **`recurrent_dropout`**  
+   - **Nilai Default**: `0.0` (tidak ada dropout)  
+   - **Penjelasan**: Fraksi unit yang di-dropout untuk transformasi linear pada state rekursif. Tidak diatur, sehingga default `0.0` digunakan.
+
+8. **`return_state`**  
+   - **Nilai Default**: `False`  
+   - **Penjelasan**: Apakah layer mengembalikan state terakhir selain output. Tidak disebutkan, jadi `False` digunakan.
+
+9. **`go_backwards`**  
+   - **Nilai Default**: `False`  
+   - **Penjelasan**: Apakah sequence diproses secara terbalik. Tidak diatur, sehingga `False` digunakan dan akan Memproses data secara berurutan
+
+10. **`stateful`**  
+    - **Nilai Default**: `False`  
+    - **Penjelasan**: Apakah layer mempertahankan state antar batch. Tidak disebutkan, jadi `False` digunakan.
+
+11. **`unroll`**  
+    - **Nilai Default**: `False`  
+    - **Penjelasan**: Apakah jaringan di-unroll (berguna untuk sequence pendek). Tidak diatur, sehingga `False` digunakan.
+
+
+
 
 👉 **Parameter model GRU juga dioptimalkan menggunakan `Hyperopt` untuk memastikan performa optimal:**
 - **Units**: Jumlah unit GRU dalam lapisan, diatur pada 80 setelah optimasi (bukan default).
